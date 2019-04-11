@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailsScanFragment"
-        android:name="ccom.briot.ams.implementor.ui.main.ProductDetailsScanFragment"
+        android:name="com.briot.ams.implementor.ui.main.ProductDetailsScanFragment"
         android:label="product_details_scan_fragment"
         tools:layout="@layout/product_details_scan_fragment" >
         <action

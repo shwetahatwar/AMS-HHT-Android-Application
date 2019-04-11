@@ -38,8 +38,10 @@ class MainFragment : Fragment() {
         context?.let { PrefRepository.singleInstance.deserializePrefs(it) }
 
         var userToken: String = PrefRepository.singleInstance.getValueOrDefault(PrefConstants().USER_TOKEN, "")
-        if (userToken != null && userToken.length > 0) {
-            Navigation.findNavController(main).navigate(R.id.homeFragment)
+        if (userToken.isNotEmpty()) {
+            Observable.timer(2000, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe( { Navigation.findNavController(img).navigate(R.id.homeFragment) } );
         } else {
             Observable.timer(2000, TimeUnit.MILLISECONDS)
                     .observeOn(AndroidSchedulers.mainThread())

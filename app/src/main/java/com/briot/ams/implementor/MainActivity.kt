@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
+import com.briot.ams.implementor.repository.local.PrefRepository
 import io.github.pierry.progress.Progress
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,21 +14,62 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
+import okhttp3.Interceptor
+import okhttp3.Response
+
+
+class ResponseHeaderAuthTokenInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val originalResponse = chain.proceed(chain.request())
+
+        val localheaders = originalResponse.headers("x-jwt-token")
+
+        val jwtTokenExists = localheaders?.isNotEmpty() ?: false
+
+        if (jwtTokenExists) {
+            val jwtToken = localheaders.get(0)
+            PrefRepository.singleInstance.setKeyValue("x-jwt-token", jwtToken ?: "")
+        }
+
+        return originalResponse
+    }
+
+}
+
+class RequestHeaderAuthTokenInterceptor : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val builder = chain.request().newBuilder()
+
+        builder.addHeader("x-jwt-token", PrefRepository.singleInstance.getValueOrDefault("x-jwt-token", ""))
+
+        return chain.proceed(builder.build())
+    }
+
+}
+
 
 class RetrofitHelper {
     companion object {
         val BASE_URL = BuildConfig.HOSTNAME;
 
-        val okHttpClient = OkHttpClient.Builder()
-                .readTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .build()
+
+        private fun getOkHttpClient(): OkHttpClient {
+            val okHttpClient: OkHttpClient.Builder = OkHttpClient().newBuilder()
+//                    .connectTimeout((30).toLong(), TimeUnit.SECONDS)
+                    .readTimeout((90).toLong(), TimeUnit.SECONDS)
+                    .writeTimeout((60).toLong(), TimeUnit.SECONDS)
+
+            okHttpClient.interceptors().add(RequestHeaderAuthTokenInterceptor())
+//            okHttpClient.interceptors().add(ResponseHeaderAuthTokenInterceptor())
+
+            return okHttpClient.build()
+        }
 
         val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
+                .client(getOkHttpClient())
                 .build()
     }
 }
