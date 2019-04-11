@@ -1,4 +1,4 @@
-package com.example.manishraje.implementor
+package com.briot.ams.implementor
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.example.manishraje.implementor", appContext.packageName)
+        assertEquals("com.briot.ams.implementor", appContext.packageName)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.manishraje.implementor
+package com.briot.ams.implementor
 
 import org.junit.Test
 

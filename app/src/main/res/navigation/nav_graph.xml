@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.manishraje.implementor.ui.main.MainFragment"
+        android:name="com.briot.ams.implementor.ui.main.MainFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.manishraje.implementor.ui.main.LoginFragment"
+        android:name="com.briot.ams.implementor.ui.main.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.manishraje.implementor.ui.main.HomeFragment"
+        android:name="com.briot.ams.implementor.ui.main.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailsScanFragment"
-        android:name="com.example.manishraje.implementor.ui.main.ProductDetailsScanFragment"
+        android:name="ccom.briot.ams.implementor.ui.main.ProductDetailsScanFragment"
         android:label="product_details_scan_fragment"
         tools:layout="@layout/product_details_scan_fragment" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/putAwayLocationScanFragment"
-        android:name="com.example.manishraje.implementor.ui.main.PutAwayLocationScanFragment"
+        android:name="com.briot.ams.implementor.ui.main.PutAwayLocationScanFragment"
         android:label="put_away_location_scan_fragment"
         tools:layout="@layout/put_away_location_scan_fragment" >
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/pickListFragment"
-        android:name="com.example.manishraje.implementor.ui.main.PickListFragment"
+        android:name="com.briot.ams.implementor.ui.main.PickListFragment"
         android:label="pick_list_fragment"
         tools:layout="@layout/pick_list_fragment" >
         <action
@@ -72,17 +72,17 @@
     </fragment>
     <fragment
         android:id="@+id/putAwayProductScanFragment"
-        android:name="com.example.manishraje.implementor.ui.main.PutAwayProductScanFragment"
+        android:name="com.briot.ams.implementor.ui.main.PutAwayProductScanFragment"
         android:label="put_away_product_scan_fragment"
         tools:layout="@layout/put_away_product_scan_fragment" />
     <fragment
         android:id="@+id/produceDetailsFragment"
-        android:name="com.example.manishraje.implementor.ui.main.ProduceDetailsFragment"
+        android:name="com.briot.ams.implementor.ui.main.ProduceDetailsFragment"
         android:label="produce_details_fragment"
         tools:layout="@layout/produce_details_fragment" />
     <fragment
         android:id="@+id/PickListProductFragment"
-        android:name="com.example.manishraje.implementor.ui.main.PickListProductFragment"
+        android:name="com.briot.ams.implementor.ui.main.PickListProductFragment"
         android:label="picklist_product_scan"
         tools:layout="@layout/picklist_products_list_row" >
         <action
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/putAwayReportFragment"
-        android:name="com.example.manishraje.implementor.ui.main.PutAwayReportFragment"
+        android:name="com.briot.ams.implementor.ui.main.PutAwayReportFragment"
         android:label="put_away_report_fragment"
         tools:layout="@layout/put_away_report_fragment" />
 

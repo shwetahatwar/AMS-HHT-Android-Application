@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.manishraje.implementor"
+        applicationId "com.briot.ams.implementor"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
