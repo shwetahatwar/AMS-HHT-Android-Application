@@ -31,8 +31,8 @@
             android:id="@+id/action_homeFragment_to_productDetailsScanFragment"
             app:destination="@id/productDetailsScanFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_putAwayLocationScanFragment"
-            app:destination="@id/putAwayLocationScanFragment" />
+            android:id="@+id/action_homeFragment_to_assetAuditListFragment"
+            app:destination="@id/auditAssetFragment" />
         <action
             android:id="@+id/action_homeFragment_to_pickListFragment"
             app:destination="@id/pickListFragment" />
@@ -94,5 +94,9 @@
         android:name="com.briot.ams.implementor.ui.main.PutAwayReportFragment"
         android:label="put_away_report_fragment"
         tools:layout="@layout/put_away_report_fragment" />
-
+    <fragment
+        android:id="@+id/auditAssetFragment"
+        android:name="com.briot.ams.implementor.ui.main.AssetAuditListFragment"
+        android:label="put_away_report_fragment"
+        tools:layout="@layout/asset_audit_list_fragment" />
 </navigation>

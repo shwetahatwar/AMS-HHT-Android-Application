@@ -41,7 +41,7 @@ class PutAwayReportFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(PutAwayReportViewModel::class.java)
         // TODO: Use the ViewModel
 
-        (this.activity as AppCompatActivity).setTitle("Put Away")
+        (this.activity as AppCompatActivity).setTitle("Audit")
 
         productsReport.adapter = ProductReportAdapter(this.context!!)
         productsReport.layoutManager = LinearLayoutManager(this.context)
@@ -58,7 +58,7 @@ class PutAwayReportFragment : Fragment() {
                     (productsReport.adapter as ProductReportAdapter).addAll(it)
                     productsReport.adapter.notifyDataSetChanged()
                 } else {
-                    MainActivity.showAlert(this.activity as AppCompatActivity, "Put Away report could not be created");
+                    MainActivity.showAlert(this.activity as AppCompatActivity, "Audit report could not be created");
                 }
             }
 

@@ -47,7 +47,7 @@ class PutAwayProductScanFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(PutAwayProductScanViewModel::class.java)
         val locationbarcode: String = PrefRepository.singleInstance.getValueOrDefault(PrefConstants().PUTAWAYLOCATION, "")
 
-        (this.activity as AppCompatActivity).setTitle("Put Away")
+        (this.activity as AppCompatActivity).setTitle("Audit")
         putAwayLocationScanText.text = locationbarcode
 
         productsList.adapter = BarcodeAdapter(this.context!!)

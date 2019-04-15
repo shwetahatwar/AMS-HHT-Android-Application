@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/putAway"
+        android:id="@+id/auditAssets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
@@ -57,7 +57,7 @@
         android:textColor="@color/moveAssetButtonTitle"
         android:textAllCaps="false"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/putAway"
+        app:layout_constraintTop_toBottomOf="@id/auditAssets"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

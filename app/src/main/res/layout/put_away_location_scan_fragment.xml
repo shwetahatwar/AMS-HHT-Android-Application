@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/ic_onboard_background" />
+        app:srcCompat="@drawable/ic_onboard_background"
+        android:contentDescription="@string/todo" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/locationScanText"
@@ -18,7 +19,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Location Serial Number"
+        android:hint="@string/scan_location"
         android:inputType="textNoSuggestions"
         android:maxLength="30"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
         android:layout_height="54dp"
         android:layout_marginTop="14dp"
         android:background="@color/colorPrimary"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/locationScanText"

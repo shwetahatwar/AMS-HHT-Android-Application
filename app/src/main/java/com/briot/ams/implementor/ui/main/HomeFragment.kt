@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         (this.activity as AppCompatActivity).setTitle("Briot AMS")
 
         productDetails.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_productDetailsScanFragment) }
-        putAway.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_putAwayLocationScanFragment) }
+        auditAssets.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_assetAuditListFragment) }
         pickList.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_pickListFragment) }
         putAwayReport.setOnClickListener { Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_putAwayReportFragment) }
     }

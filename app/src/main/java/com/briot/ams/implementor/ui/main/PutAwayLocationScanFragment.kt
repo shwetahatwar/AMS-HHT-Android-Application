@@ -45,7 +45,7 @@ class PutAwayLocationScanFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(PutAwayLocationScanViewModel::class.java)
         // TODO: Use the ViewModel
 
-        (this.activity as AppCompatActivity).setTitle("Put Away")
+        (this.activity as AppCompatActivity).setTitle("Audit")
 
         viewModel.rackLocation.observe(this, Observer<RackLocation> {
             MainActivity.hideProgress(this.progress)

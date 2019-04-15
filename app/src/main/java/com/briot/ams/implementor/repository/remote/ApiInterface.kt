@@ -2,6 +2,7 @@ package com.briot.ams.implementor.repository.remote
 
 import io.reactivex.Observable
 import retrofit2.http.*
+import java.util.*
 
 
 class SignInRequest {
@@ -12,6 +13,44 @@ class SignInRequest {
 class User {
     var username: String? = null
     var token: String? = null
+}
+
+class Site {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+}
+
+class Location {
+    var id: Int = -1
+    var name: String? = null
+    var siteId: Int = -1
+    var status: String? = null
+}
+
+class SubLocation {
+    var id: Int = -1
+    var name: String? = null
+    var locationId: Int = -1
+    var statusId: String? = null
+    var barcodeSerial: String? = null
+}
+
+class Audit {
+    var id: Int = -1
+    var status: String? = null
+    var site: Int = -1
+    var location: Int = -1
+    var subLocation: Int = -1
+    var auditedBy: String? = null
+    var auditedAt: Date? = null
+    var approvedBy: String? = null
+    var approvedAt: Date? = null
+    var createdAt: Date? = null
+    var updatedAt: Date? = null
+//    var site: Site? = null
+//    var location: Location? = null
+//    var SubLocation: SubLocation? = null
 }
 
 class Product {
@@ -75,5 +114,8 @@ interface ApiInterface {
 
     @GET("putawayreport")
     fun putAwayReport(@Query("username") username: String): Observable<List<Product>>
+
+    @GET("auditMaster/audit/auditPending")
+    fun pendingAuditList() : Observable<List<Audit>>
 
 }

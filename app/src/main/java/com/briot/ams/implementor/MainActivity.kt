@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
+import com.briot.ams.implementor.repository.local.PrefConstants
 import com.briot.ams.implementor.repository.local.PrefRepository
 import io.github.pierry.progress.Progress
 import retrofit2.Retrofit
@@ -40,7 +41,8 @@ class RequestHeaderAuthTokenInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
 
-        builder.addHeader("x-jwt-token", PrefRepository.singleInstance.getValueOrDefault("x-jwt-token", ""))
+        val token: String = "JWT " + PrefRepository.singleInstance.getValueOrDefault(PrefConstants().USER_TOKEN, "")
+        builder.addHeader("Authorization", token)
 
         return chain.proceed(builder.build())
     }
