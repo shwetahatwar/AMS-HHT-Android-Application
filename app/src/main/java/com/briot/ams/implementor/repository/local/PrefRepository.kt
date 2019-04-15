@@ -51,4 +51,5 @@ class PrefConstants {
     public val PUTAWAYLOCATION = "PUTAWAYLOCATION"
     public val PICKLISTID = "PICKLISTID"
     public val USER_TOKEN = "USERTOKEN"
+    public val PENDINGAUDITLISTID = "PENDINGAUDITLISTID"
 }

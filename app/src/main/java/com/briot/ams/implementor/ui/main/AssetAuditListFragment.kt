@@ -12,9 +12,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import com.briot.ams.implementor.MainActivity
 import com.pascalwelsch.arrayadapter.ArrayAdapter
 import com.briot.ams.implementor.R
+import com.briot.ams.implementor.repository.local.PrefConstants
+import com.briot.ams.implementor.repository.local.PrefRepository
 import com.briot.ams.implementor.repository.remote.Audit
 import io.github.pierry.progress.Progress
 import kotlinx.android.synthetic.main.asset_audit_list_fragment.*
@@ -94,8 +97,8 @@ class PendingAuditAdapter(val context: Context) : ArrayAdapter<Audit, PendingAud
         holder.auditlistId.setText(displayItem)
 
         holder.auditlistId.setOnClickListener {
-//            PrefRepository.singleInstance.setKeyValue(PrefConstants().PICKLISTID,item.PicklistID!!)
-//            Navigation.findNavController(it).navigate(R.id.action_pickListFragment_to_PickListProductFragment)
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().PENDINGAUDITLISTID,item.id.toString())
+            Navigation.findNavController(it).navigate(R.id.action_pickListFragment_to_PickListProductFragment)
         }
     }
 

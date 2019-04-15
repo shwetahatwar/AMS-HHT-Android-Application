@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.ProductDetailsScanFragment">
+    tools:context=".ui.main.AssetDetailsScanFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -13,13 +13,13 @@
         app:srcCompat="@drawable/ic_onboard_background" />
 
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/productScanText"
+        android:id="@+id/assetScanText"
         android:layout_width="268dp"
         android:layout_height="45dp"
         android:layout_marginTop="14dp"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:hint="Asset Barcode"
+        android:hint="@string/asset_barcode"
         android:inputType="textNoSuggestions"
         android:maxLength="30"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,16 +27,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/viewProductDetails"
+        android:id="@+id/viewAssetDetails"
         android:layout_width="268dp"
         android:layout_height="54dp"
         android:layout_marginTop="14dp"
         android:background="@color/colorPrimary"
-        android:text="View Asset Details"
+        android:text="@string/view_asset_details"
         android:textAllCaps="false"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/productScanText"
+        app:layout_constraintTop_toBottomOf="@id/assetScanText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/assetItemsList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAssetDetails" />
 
 </android.support.constraint.ConstraintLayout>

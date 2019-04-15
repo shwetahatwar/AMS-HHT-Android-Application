@@ -20,9 +20,9 @@ class RemoteRepository {
                 .subscribe(handleResponse, handleError)
     }
 
-    fun getProductDetails(barcode: String, handleResponse: (Product) -> Unit, handleError: (Throwable) -> Unit) {
+    fun getAssetDetails(barcode: String, handleResponse: (Asset) -> Unit, handleError: (Throwable) -> Unit) {
         RetrofitHelper.retrofit.create(ApiInterface::class.java)
-                .productDetails(barcode)
+                .assetDetails(barcode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(handleResponse, handleError)

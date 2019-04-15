@@ -53,6 +53,42 @@ class Audit {
 //    var SubLocation: SubLocation? = null
 }
 
+class Asset {
+    var id: Int = -1
+    var oemSerialNumber: String? = null
+    var assetSubTypeId: Int = -1
+    var assetSubType: String? = null
+    var assetDescription: String? = null
+    var manufacturerId: Int = -1
+    var manufacturer: String? = null
+    var modelId: Int = -1
+    var model: String? = null
+    var siteId: String? = null
+    var locationId: String? = null
+    var subLocationId: String? = null
+    var site: String? = null
+    var location: String? = null
+    var subLocation: String? = null
+    var employeeId: String? = null
+    var departmentId: String? = null
+    var stateId: Int = -1
+    var state: String? = null
+    var costcenterId: String? = null
+    var status: String? = null
+    var barcodeSerial: String? = null
+    var poDate: String? = null
+    var costOfAsset: Int = 0
+    var poNumber: String? = null
+    var depreciationTypeId: Int = -1
+    var rateOfDepreciation: String? = null
+    var lifeExpectancy: String? = null
+    var calculatedBook: Int = 0
+    var asOfDateDepreciation: String? = null
+    var purchaseDate: String? = null
+    var createdAt: Date? = null
+    var updatedAt: Date? = null
+}
+
 class Product {
     var BarcodeSerialNumber: String? = null
     var ProductStockId: String? = null
@@ -118,4 +154,6 @@ interface ApiInterface {
     @GET("auditMaster/audit/auditPending")
     fun pendingAuditList() : Observable<List<Audit>>
 
+    @GET("asset/{barcode}")
+    fun assetDetails(@Path("barcode") barcode: String) : Observable<Asset>
 }
