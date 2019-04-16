@@ -14,9 +14,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import com.briot.ams.implementor.MainActivity
 
 import com.briot.ams.implementor.R
+import com.briot.ams.implementor.repository.local.PrefConstants
+import com.briot.ams.implementor.repository.local.PrefRepository
 import com.briot.ams.implementor.repository.remote.Asset
 import com.pascalwelsch.arrayadapter.ArrayAdapter
 import io.github.pierry.progress.Progress
@@ -55,7 +58,7 @@ class SelectedAuditFragment : Fragment() {
 
             if (it != null && it != oldResponse) {
                 for(i in 0 until it.size) {
-                    (pendingAuditAssetLists.adapter as AssetItemsAdapter).add(it[i])
+                    (pendingAuditAssetLists.adapter as SelectedAuditAssetsAdapter).add(it[i])
                 }
                 pendingAuditAssetLists.adapter.notifyDataSetChanged()
             }
@@ -73,12 +76,22 @@ class SelectedAuditFragment : Fragment() {
         })
 
         scanLocationButton.setOnClickListener {
-            this.progress = MainActivity.showProgressIndicator(this.activity as AppCompatActivity, "Please wait")
-//            viewModel.loadAssetDetails(assetScanText.text.toString())
+            val auditId: String = PrefRepository.singleInstance.getValueOrDefault(PrefConstants().SELECTED_AUDIT_ID,"")
+            val subLocationId: String = PrefRepository.singleInstance.getValueOrDefault(PrefConstants().SELECTED_AUDIT_SUBLOCATION,"")
+            if (subLocationId.equals(scanLocationTextView.text.toString()) && !auditId.isEmpty()) {
+                this.progress = MainActivity.showProgressIndicator(this.activity as AppCompatActivity, "Please wait")
+                viewModel.pendingAuditList(auditId)
+            } else {
+                MainActivity.showAlert(this.activity as AppCompatActivity, "Scanned location is not matching for current Audit");
+//                Toast.makeText(activity, "Scanned location is not matching for current Audit", Toast.LENGTH_LONG).show()
+            }
         }
 
         submitAudit.setOnClickListener {
-            this.progress = MainActivity.showProgressIndicator(this.activity as AppCompatActivity, "Please wait")
+            if (!assetScanText.text.toString().isEmpty()) {
+                this.progress = MainActivity.showProgressIndicator(this.activity as AppCompatActivity, "Please wait")
+            }
+
 //            viewModel.loadAssetDetails(assetScanText.text.toString())
         }
 
@@ -117,9 +130,11 @@ class SelectedAuditAssetsAdapter(val context: Context) : ArrayAdapter<Asset, Sel
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position) as Asset
-//        var displayItem: String = item.id.toString() + " - " + item.createdAt.toString()
-//        holder.auditlistId.setText(displayItem)
-//
+        var displayItem: String = """${item.Asset?.barcodeSerial.toString()} - status: ${item.status.toString()}"""
+        var status: String = """${item.Asset?.assetDescription.toString()} """
+        holder.assetItemHeadingId.setText(displayItem)
+        holder.assetItemValueId.setText(status)
+
 //        holder.auditlistId.setOnClickListener {
 //            PrefRepository.singleInstance.setKeyValue(PrefConstants().PENDINGAUDITLISTID,item.id.toString())
 //            Navigation.findNavController(it).navigate(R.id.action_auditListFragment_to_SelectedAuditFragment)

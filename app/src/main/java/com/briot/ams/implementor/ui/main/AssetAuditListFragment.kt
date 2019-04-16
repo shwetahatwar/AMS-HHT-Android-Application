@@ -3,6 +3,7 @@ package com.briot.ams.implementor.ui.main
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -98,7 +99,8 @@ class PendingAuditAdapter(val context: Context) : ArrayAdapter<Audit, PendingAud
         holder.auditlistId.setText(displayItem)
 
         holder.auditlistId.setOnClickListener {
-            PrefRepository.singleInstance.setKeyValue(PrefConstants().PENDINGAUDITLISTID,item.id.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_ID,item.id.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SUBLOCATION,item.subLocation.toString())
             Navigation.findNavController(it).navigate(R.id.action_auditListFragment_to_SelectedAuditFragment)
         }
     }

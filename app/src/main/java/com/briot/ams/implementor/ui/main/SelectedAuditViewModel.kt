@@ -19,9 +19,9 @@ class SelectedAuditViewModel : ViewModel() {
 
     val networkError: LiveData<Boolean> = MutableLiveData<Boolean>()
 
-    fun pendingAuditList() {
+    fun pendingAuditList(auditId: String) {
         (networkError as MutableLiveData<Boolean>).value = false
-        RemoteRepository.singleInstance.pendingAuditAssetsList("10", this::handleResponse, this::handleError)
+        RemoteRepository.singleInstance.pendingAuditAssetsList(auditId, this::handleResponse, this::handleError)
     }
 
     private fun handleResponse(item: List<Asset>) {

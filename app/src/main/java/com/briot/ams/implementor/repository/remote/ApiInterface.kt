@@ -1,5 +1,7 @@
 package com.briot.ams.implementor.repository.remote
 
+import android.os.Parcel
+import android.os.Parcelable
 import io.reactivex.Observable
 import retrofit2.http.*
 import java.util.*
@@ -53,7 +55,7 @@ class Audit {
 //    var SubLocation: SubLocation? = null
 }
 
-class Asset {
+class Asset  {
     var id: Int = -1
     var oemSerialNumber: String? = null
     var assetSubTypeId: Int = -1
@@ -87,6 +89,7 @@ class Asset {
     var purchaseDate: String? = null
     var createdAt: Date? = null
     var updatedAt: Date? = null
+    var Asset: Asset? = null
 }
 
 class Product {
@@ -154,7 +157,7 @@ interface ApiInterface {
     @GET("auditMaster/audit/auditPending")
     fun pendingAuditList() : Observable<List<Audit>>
 
-    @GET("asset/{barcode}")
+    @GET("asset/assetDetail/barcodeSerial/{barcode}")
     fun assetDetails(@Path("barcode") barcode: String) : Observable<Asset>
 
     @GET("auditDetail/audit/withSubLocation")
