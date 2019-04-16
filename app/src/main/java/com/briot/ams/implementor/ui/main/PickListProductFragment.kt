@@ -79,7 +79,7 @@ class PickListProductFragment: Fragment(){
 
             //this.progress = MainActivity.showProgressIndicator(this.activity as AppCompatActivity, "Please wait")
             viewModel.completePicklistProduct(PrefRepository.singleInstance.getValueOrDefault(PrefConstants().PICKLISTID,""))
-            Navigation.findNavController(it).navigate(R.id.action_PickListProductFragment_to_pickListFragment3)
+//            Navigation.findNavController(it).navigate(R.id.action_PickListProductFragment_to_pickListFragment3)
         }
 
         viewModel.networkError.observe(this, Observer<Boolean> {

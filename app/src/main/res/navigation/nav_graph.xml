@@ -98,5 +98,14 @@
         android:id="@+id/auditAssetFragment"
         android:name="com.briot.ams.implementor.ui.main.AssetAuditListFragment"
         android:label="put_away_report_fragment"
-        tools:layout="@layout/asset_audit_list_fragment" />
+        tools:layout="@layout/asset_audit_list_fragment" >
+        <action
+            android:id="@+id/action_auditListFragment_to_SelectedAuditFragment"
+            app:destination="@id/selectedAuditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedAuditFragment"
+        android:name="com.briot.ams.implementor.ui.main.SelectedAuditFragment"
+        android:label="put_away_report_fragment"
+        tools:layout="@layout/selected_audit_fragment" />
 </navigation>

@@ -93,7 +93,7 @@ class PendingAdapter(val context: Context) : ArrayAdapter<PendingPicklist, Pendi
 
         holder.picklistId.setOnClickListener {
             PrefRepository.singleInstance.setKeyValue(PrefConstants().PICKLISTID,item.PicklistID!!)
-            Navigation.findNavController(it).navigate(R.id.action_pickListFragment_to_PickListProductFragment)
+            Navigation.findNavController(it).navigate(R.id.action_auditListFragment_to_SelectedAuditFragment)
         }
     }
 

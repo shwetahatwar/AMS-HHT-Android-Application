@@ -156,4 +156,8 @@ interface ApiInterface {
 
     @GET("asset/{barcode}")
     fun assetDetails(@Path("barcode") barcode: String) : Observable<Asset>
+
+    @GET("auditDetail/audit/withSubLocation")
+    fun pendingAuditAssetsList(@Query("auditMasterId") auditMasterId: String) : Observable<List<Asset>>
+
 }

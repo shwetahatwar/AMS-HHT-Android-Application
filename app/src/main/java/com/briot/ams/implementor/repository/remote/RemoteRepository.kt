@@ -92,4 +92,12 @@ class RemoteRepository {
                 .subscribe(handleResponse, handleError)
     }
 
+    fun pendingAuditAssetsList(auditMasterId: String, handleResponse: (List<Asset>) -> Unit, handleError: (Throwable) -> Unit) {
+        RetrofitHelper.retrofit.create(ApiInterface::class.java)
+                .pendingAuditAssetsList(auditMasterId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(handleResponse, handleError)
+    }
+
 }

@@ -21,6 +21,7 @@ import com.briot.ams.implementor.repository.local.PrefRepository
 import com.briot.ams.implementor.repository.remote.Audit
 import io.github.pierry.progress.Progress
 import kotlinx.android.synthetic.main.asset_audit_list_fragment.*
+import kotlinx.android.synthetic.main.selected_audit_fragment.*
 import kotlinx.android.synthetic.main.pending_auditlist_list_row.view.*
 
 class AssetAuditListFragment : Fragment() {
@@ -98,7 +99,7 @@ class PendingAuditAdapter(val context: Context) : ArrayAdapter<Audit, PendingAud
 
         holder.auditlistId.setOnClickListener {
             PrefRepository.singleInstance.setKeyValue(PrefConstants().PENDINGAUDITLISTID,item.id.toString())
-            Navigation.findNavController(it).navigate(R.id.action_pickListFragment_to_PickListProductFragment)
+            Navigation.findNavController(it).navigate(R.id.action_auditListFragment_to_SelectedAuditFragment)
         }
     }
 
