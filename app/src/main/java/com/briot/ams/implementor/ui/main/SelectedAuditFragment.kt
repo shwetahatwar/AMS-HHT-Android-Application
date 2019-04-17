@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.briot.ams.implementor.MainActivity
 
 import com.briot.ams.implementor.R
@@ -98,6 +99,15 @@ class SelectedAuditFragment : Fragment() {
                     (pendingAuditAssetLists.adapter as SelectedAuditAssetsAdapter).add(oldResponse!![i])
                 }
                 pendingAuditAssetLists.adapter.notifyDataSetChanged()
+            }
+        })
+
+        viewModel.selectedAudit.observe(this, Observer<Audit> {
+            if (it != null) {
+                // go back to home screen
+                // Navigation
+                MainActivity.showAlert(this.activity as AppCompatActivity, "Report submitted for approval.");
+
             }
         })
 
