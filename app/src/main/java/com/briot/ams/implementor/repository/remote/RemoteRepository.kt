@@ -100,4 +100,19 @@ class RemoteRepository {
                 .subscribe(handleResponse, handleError)
     }
 
+    fun submitAuditAssetDetails(auditAssetDetails: AuditDetails, handleResponse: (Asset) -> Unit, handleError: (Throwable) -> Unit) {
+        RetrofitHelper.retrofit.create(ApiInterface::class.java)
+                .submitAuditAssetDetails(auditAssetDetails)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(handleResponse, handleError)
+    }
+
+    fun submitAuditReport(auditId: String, handleResponse: (Audit) -> Unit, handleError: (Throwable) -> Unit) {
+        RetrofitHelper.retrofit.create(ApiInterface::class.java)
+                .submitAuditReport(auditId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(handleResponse, handleError)
+    }
 }

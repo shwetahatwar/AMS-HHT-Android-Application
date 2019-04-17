@@ -12,9 +12,47 @@ class SignInRequest {
     var password: String? = null
 }
 
+class AuditDetails {
+    var auditMasterId: Int = -1
+    var status: String? = null
+    var siteId: Int = -1
+    var locationId: Int = -1
+    var subLocationId: Int = -1
+    var barcodeSerial: String? = null
+}
+
 class User {
     var username: String? = null
     var token: String? = null
+}
+
+class Manufacturer {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+}
+
+class Department {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+}
+
+class AssetCategory {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+    var type: String? = null
+    var depreciationtype: Int = -1
+    var usableLife: String? = null
+    var salvageValuePercentage: String? = null
+}
+
+class Model {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+    var manufacturerId: Int = -1
 }
 
 class Site {
@@ -38,21 +76,50 @@ class SubLocation {
     var barcodeSerial: String? = null
 }
 
+class Employee {
+    var id: Int = -1
+    var name: String? = null
+    var departmentId: Int = -1
+    var status: String? = null
+    var barcodeSerial: String? = null
+}
+
+
+
+class Costcenter {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+}
+
+class AssetState {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+    var stateId: Int = -1
+}
+
+class DepreciationType {
+    var id: Int = -1
+    var name: String? = null
+    var status: String? = null
+}
+
 class Audit {
     var id: Int = -1
     var status: String? = null
-    var site: Int = -1
-    var location: Int = -1
-    var subLocation: Int = -1
+    var siteId: Int = -1
+    var locationId: Int = -1
+    var subLocationId: Int = -1
     var auditedBy: String? = null
     var auditedAt: Date? = null
     var approvedBy: String? = null
     var approvedAt: Date? = null
     var createdAt: Date? = null
     var updatedAt: Date? = null
-//    var site: Site? = null
-//    var location: Location? = null
-//    var SubLocation: SubLocation? = null
+    var site: Site? = null
+    var location: Location? = null
+    var SubLocation: SubLocation? = null
 }
 
 class Asset  {
@@ -89,7 +156,19 @@ class Asset  {
     var purchaseDate: String? = null
     var createdAt: Date? = null
     var updatedAt: Date? = null
+
     var Asset: Asset? = null
+    var Manufacturer: Manufacturer? = null
+    var Department: Department? = null
+    var AssetCategory: AssetCategory? = null
+    var Model: Model? = null
+    var Site: Site? = null
+    var Location: Location? = null
+    var SubLocation: SubLocation? = null
+    var Employee: Employee? = null
+    var Costcenter: Costcenter? = null
+    var AssetState: AssetState? = null
+    var DepreciationType: DepreciationType? = null
 }
 
 class Product {
@@ -163,4 +242,9 @@ interface ApiInterface {
     @GET("auditDetail/audit/withSubLocation")
     fun pendingAuditAssetsList(@Query("auditMasterId") auditMasterId: String) : Observable<List<Asset>>
 
+    @PUT("auditDetail")
+    fun submitAuditAssetDetails(@Body auditDetails: AuditDetails) : Observable<Asset>
+
+    @PUT("auditMaster/audit/updateAuditedBy")
+    fun submitAuditReport(@Body auditId: String) : Observable<Audit>
 }

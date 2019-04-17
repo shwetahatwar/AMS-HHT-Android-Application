@@ -100,7 +100,12 @@ class PendingAuditAdapter(val context: Context) : ArrayAdapter<Audit, PendingAud
 
         holder.auditlistId.setOnClickListener {
             PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_ID,item.id.toString())
-            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SUBLOCATION,item.subLocation.toString())
+
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SITEID,item.siteId.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_LOCATIONID,item.locationId.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SUBLOCATIONID,item.subLocationId.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SUBLOCATIONBC, item.SubLocation?.barcodeSerial.toString())
+            PrefRepository.singleInstance.setKeyValue(PrefConstants().SELECTED_AUDIT_SUBLOCATIONNAME,item.SubLocation?.name.toString())
             Navigation.findNavController(it).navigate(R.id.action_auditListFragment_to_SelectedAuditFragment)
         }
     }

@@ -42,11 +42,11 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/locationTextView"
+            android:id="@+id/locationLabelTextView"
             android:layout_width="match_parent"
             android:layout_height="@android:dimen/app_icon_size"
             android:baselineAligned="true"
-            android:labelFor="@+id/locationScanText"
+            android:labelFor="@+id/locationLabelTextView"
             android:paddingTop="@dimen/margin_end"
             android:text="@string/locationTextView"
             android:textAlignment="center"
